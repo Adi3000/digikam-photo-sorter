@@ -9,6 +9,8 @@ class PhotoDK (
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     var id:Long,
-    name: String,
-    path: String
+    @Column(name="name")
+    var name: String,
+    @Column(name="path")
+    var path: String
 ) : Photo(name,path)
