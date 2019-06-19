@@ -19,6 +19,9 @@ class PhotoDownloaderService {
 
     fun getTaggedPhotos(tag :String) : List<Photo>{
         val faceTag = faceDKRepository.findByName(tag)
-        return photosDKRepository.findByPeopleTag(faceTag.id, faceTag.name)
+        if(!faceTag.isPresent) {
+            return emptyList()
+        }
+        return photosDKRepository.findByPeopleTag(faceTag.get().id, faceTag.get().name)
     }
 }
